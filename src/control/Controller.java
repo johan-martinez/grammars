@@ -8,6 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ *Controlador de la logica del programa.
+ *@author Equipo de trabajo
+ */
+
 public class Controller implements ActionListener {
     private IOManager io;
     private Grammar grammar;
@@ -22,6 +27,10 @@ public class Controller implements ActionListener {
         }
     }
 
+    /**
+     * Crea una nueva clase de la gramatica
+     * @return g1 con una gramatica.
+     */
     private Grammar query() throws Exception{
         ArrayList<Character> alph = new ArrayList<>();
         alph.add('m');
@@ -41,6 +50,10 @@ public class Controller implements ActionListener {
         return g1;
     }
 
+    /**
+     * analizeWord 
+     * Analiza la palabra si existe y notifica al usuario si se encontro o no .
+     */
     private void analizeWord(){
         try {
             String word=io.getWord(); //sacarlo dela GUI
@@ -50,6 +63,9 @@ public class Controller implements ActionListener {
         }
     }
 
+    /**
+     * Controlador de los botones que indica que funcion deben ejecutar.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (CommandsGUI.valueOf(e.getActionCommand())){
@@ -62,6 +78,10 @@ public class Controller implements ActionListener {
         }
     }
 
+     /**
+     * createGrammar 
+     * Crea una gramarica y retorna una notificacion al usuario
+     */
     private void createGrammar() {
         try {
             ArrayList<Character> alphabet=io.getAlphabet();
