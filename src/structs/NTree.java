@@ -46,17 +46,6 @@ public class NTree<E> {
         return new NodeNTree<>(e,father);
     }
 
-
-
-    //-----------------------------Parce no entendi un culo jajajaja XD---------------------------------------------//
-
-
-
-
-
-
-
-
     /**
      *Verifica si el elemento e es una instancia de la interfaz Element
      * @param e Objeto de la interfaz e
@@ -70,15 +59,6 @@ public class NTree<E> {
         NodeNTree<E> node = (NodeNTree<E>)e;
         return node.getFather()==node?null:node;
     }
-
-
-
-
-
-
-
-
-    //-----------------------------------------------------------------------------------------
 
     /**
      *Verifica si el elemento e es el nodo raiz del arbol
@@ -97,20 +77,15 @@ public class NTree<E> {
         return getAmount()==0;
     }
 
-    //---------------------------------------------aucsilio, no me acuerdo de valero------------------------------------//
-
-
-
-
+    /**
+     *Obtiene el padre de e
+     * @param e nodo
+     * @return  validate(e).getFather() padre de e
+     */
     public Element<E> getFather(Element<E> e) {
         return validate(e).getFather();
     }
 
-
-
-
-
-    //-------------------------------------------------------------------------------------------------------------------//
     /**
      *Verifica algo que no se que es porque no entendi bien el metodo validate
      * @return node.childsSize() retorna la cantidad de hijos del nodo
@@ -167,9 +142,9 @@ public class NTree<E> {
 
 
     /**
-     *Retorna el valor de un nodo
-     * @param e nodo del cual se retornara la lista de hijos
-     * @return node.childs() retorna la lista de hijos de un nodo
+     *Obtiene el valor de e
+     * @param e nodo del cual se retornara el valor
+     * @return  node.getElement() retorna el valor del nodo e
      */
     public Element<E> getElement(E e) {
         NodeNTree<Element<E>> node=new NodeNTree<Element<E>>();
@@ -188,14 +163,6 @@ public class NTree<E> {
             search(e,x,node);
         }
     }
-
-
-
-
-
-
-    //------------------------------------------------------------------------------------------------------------------//
-
 
     /**
      *Inserta una nueva raiz
@@ -261,6 +228,9 @@ public class NTree<E> {
         return pos;
     }
 
+    /**
+     *Ordena de hacia adelante
+     */
     private void inOrder(Element<E> root, ArrayList<Element<E>> pos) {
         if(numberChildrens(root)==0) {
             pos.add(root);
@@ -274,7 +244,10 @@ public class NTree<E> {
 
     }
 
-
+    /**
+     *Ordena hacia adelante
+     * @return pos retirna la posición mas hacia la izquierda
+     */
     public Iterable<Element<E>> posOrder() {
         ArrayList<Element<E>> pos=new ArrayList<Element<E>>();
         if(!isEmpty()) {
@@ -282,7 +255,9 @@ public class NTree<E> {
         }
         return pos;
     }
-
+    /**
+     *Ordena hacia adelante
+     */
     private void posOrder(Element<E> root, ArrayList<Element<E>> pos) {
         for(Element<E>child: getChilds(root)) {
             posOrder(child,pos);

@@ -4,9 +4,18 @@ import model.*;
 
 import java.util.ArrayList;
 
-public class Run {
-    public static void main(String[] args) {
+/**
+ *Clase de Iniciación del programa.
+ *@author Equipo de trabajo
+ */
 
+public class Run {
+
+    /**
+     *Método main
+     * @param args listado de argumentos.
+     */
+    public static void main(String[] args) {
         new Controller();
     }
 }
