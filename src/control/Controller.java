@@ -68,9 +68,13 @@ public class Controller implements ActionListener {
             ArrayList<Character> notTerminals=io.getNotTerminals();
             char axioma= io.getAxioma();
             ArrayList<String> proccesses= io.getProccesses();
-            this.grammar=new Grammar(alphabet,notTerminals,axioma,proccesses);
-            io.setTree(grammar.getTree(4));
-            io.showContainerPanel();
+            if (alphabet.size()>1&&notTerminals.size()>2&&proccesses.size()>3) {
+                this.grammar=new Grammar(alphabet,notTerminals,axioma,proccesses);
+                io.setTree(grammar.getTree(4));
+                io.showContainerPanel();
+            }else{
+                io.showError("Debe Ingresar:\n\t1)Mínimo dos símbolos terminales\n\t2)Minimo tres símbolos terminales\n\t3)Mínimo tres procesos","Error al crear gramática");
+            }
         }catch (Exception e){
             this.grammar=null;
             io.showError(e.getMessage(), "Error al crear una gramática");
