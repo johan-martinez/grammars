@@ -8,6 +8,12 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Panel que contienen los paneles de la aplicacion.
+ * @version 1
+ * @author Grupo
+ */
+
 public class TreePanel<E> extends JPanel {
 
     private int ratio =15;
@@ -16,11 +22,19 @@ public class TreePanel<E> extends JPanel {
     private HashMap<Element<E>, Point> coords;
     private static final int FRAME_WIDTH = 800;
 
+    /** 
+     * Constructor.
+     * @param nTree Arbol NArio que contiene el arbol de derivacion.
+     */
     public TreePanel(NTree<E> nTree) {
         this.nTree = nTree;
         this.coords =new HashMap<Element<E>, Point>();
     }
 
+    /** 
+     * paintComponent
+     * @param g Graphics.
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if(!nTree.isEmpty()) {
@@ -33,6 +47,16 @@ public class TreePanel<E> extends JPanel {
         }
     }
 
+    /** 
+     * Draw dibuja en el panel
+     * @param g Graphics.
+     * @param node Node de Ntree representa una posicion en el arbol de derivacion.
+     * @param x Pos en x.
+     * @param y Pos en Y.
+     * @param spaceH Espacio de separacion.
+     * @param widthMax Tamaño maximo.
+     * @param widthMin Tamaño minimo.
+     */
     private void draw(Graphics g, Element<E> node, int x, int y, int spaceH,int widthMax,int widthMin) {
         //g.drawOval(x- ratio,y- ratio,2* ratio,2* ratio);
         g.drawString(node.getElement() + "", x - 6, y + 4);
@@ -57,6 +81,15 @@ public class TreePanel<E> extends JPanel {
         }
     }
 
+
+    /** 
+     * Draw dibuja las lineas que conectan los nodos
+     * @param g Graphics.
+     * @param x1 Node de Ntree representa una posicion en el arbol de derivacion.
+     * @param y1 Pos en x.
+     * @param x2 Pos en Y.
+     * @param y2 Espacio de separacion.
+     */
     private void drawLine(Graphics g, int x1, int y1, int x2, int y2) {
         double  d=Math.sqrt(verticalPadding * verticalPadding +(x2-x1)*(x2-x1));
         int xx1=(int)(x1- ratio *(x1-x2)/d);

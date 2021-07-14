@@ -4,6 +4,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 
+/**
+ * Panel de las palabras encargado de todo lo que trata de la misma.
+ * @version 1
+ * @author Grupo
+ */
+
 public class PanelWord extends JPanel {
 
     private JLabel labelTitle;
@@ -11,12 +17,20 @@ public class PanelWord extends JPanel {
     private JButton buttonConfirm;
     private GridSystem gridSystem;
 
+     /** 
+     * Constructor.
+     * @param l ActionListener de los botones.
+     */
     public PanelWord(ActionListener l) {
         this.gridSystem=new GridSystem(this);
         initComponents();
         setActionsCommands(l);
     }
 
+    /** 
+     * Ejecucion inicial del panel ejecutando 
+     * y agregando los paneles al contenedor.
+     */
     private void initComponents() {
         this.labelTitle = new JLabel("Ingrese una Palabra", SwingConstants.CENTER);
         this.labelTitle.setHorizontalTextPosition(JLabel.CENTER);
@@ -33,7 +47,10 @@ public class PanelWord extends JPanel {
 
     }
 
-
+    /** 
+     * Escucha al boton de analizar palabra 
+     * @param l ActionListener de los botones.
+     */
     private void setActionsCommands(ActionListener l) {
         buttonConfirm.setActionCommand(CommandsGUI.ANALIZE_WORD.name());
         buttonConfirm.addActionListener(l);
@@ -41,10 +58,16 @@ public class PanelWord extends JPanel {
 
 
 
+    /** 
+     * Limpia el formulario
+     */
     public void clear() {
         this.text.setText("");
     }
-
+    /** 
+     * Retorna la palabra
+     * Retorna un string  con la palabra
+     */
     public String getWord() throws Exception{
         String temp=this.text.getText();
         if (temp.compareTo("")==0) {

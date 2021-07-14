@@ -6,6 +6,12 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+/**
+ * Panel principal donde se ejecutan los arboles.
+ * @version 1
+ * @author Grupo
+ */
+
 
 public class PanelPrincipal extends JPanel {
 
@@ -15,6 +21,11 @@ public class PanelPrincipal extends JPanel {
     private JButton buttonConfirm;
     private GridSystem gridSystem;
 
+     /** 
+     * Constructor.
+     * @param l ActionListener de los botones.
+     */
+
     public PanelPrincipal(ActionListener l) {
         this.gridSystem=new GridSystem(this);
         setBorder(new EmptyBorder(10,20,10,20));
@@ -22,6 +33,11 @@ public class PanelPrincipal extends JPanel {
         setActionsCommands(l);
     }
 
+    /** 
+     * Ejecucion inicial del panel ejecutando 
+     * y agregando los paneles al contenedor.
+     * @param l ActionListener de los botones.
+     */
     private void initComponents() {
         this.labelTitle=new JLabel("GRAMÁTICAS",SwingConstants.CENTER);
         this.labelTitle.setHorizontalTextPosition(JLabel.CENTER);
@@ -59,11 +75,20 @@ public class PanelPrincipal extends JPanel {
         this.add(buttonConfirm,gridSystem.insertComponent(13,5,2,1));
     }
 
+    /** 
+     * Metodo de escucha del boton de crear gramatica
+     * @param  l ActionListener.
+     */
     private void setActionsCommands(ActionListener l) {
         buttonConfirm.setActionCommand(CommandsGUI.CREATE_GRAMMAR.name());
         buttonConfirm.addActionListener(l);
     }
 
+
+    /** 
+     * Metodo que retorna una lista con el alfabeto.
+     * @return Arraylist de caracteres que contiene el alfabeto dentro de ella.
+     */
     public ArrayList<Character> getAlphabet() throws Exception{
         String temp=this.areaAlphabet.getText();
         if (temp.compareTo("")==0){
@@ -84,6 +109,11 @@ public class PanelPrincipal extends JPanel {
         }
     }
 
+
+    /** 
+     * Metodo que retorna la lisa con los caracteres no terminales.
+     * @return Arraylist de caracteres que contiene una lista de caracteres no terminales.
+     */
     public ArrayList<Character> getNotTerminals() throws Exception{
         String temp=this.areaNotTerminals.getText();
         if (temp.compareTo("")==0){
@@ -104,6 +134,11 @@ public class PanelPrincipal extends JPanel {
         }
     }
 
+
+    /** 
+     * Metodo que retorna  un axioma.
+     * @return Char con el axioma.
+     */
     public char getAxioma() throws Exception{
         String temp=textAxioma.getText();
         if (temp.length()<2&&temp.charAt(0)!=' '){
@@ -113,6 +148,11 @@ public class PanelPrincipal extends JPanel {
         }
     }
 
+
+    /** 
+     * Metodo que busca y retorna los procesos .
+     * @return Arrylist de string con los procesos.
+     */
     public ArrayList<String> getProccesses() throws Exception{
         String temp=this.areaProcceses.getText();
         if (temp.compareTo("")==0){
@@ -133,6 +173,9 @@ public class PanelPrincipal extends JPanel {
         }
     }
 
+     /** 
+     * Metodo que limpia el formulario
+     */
     public void clear() {
         this.areaAlphabet.setText("");
         this.areaNotTerminals.setText("");
