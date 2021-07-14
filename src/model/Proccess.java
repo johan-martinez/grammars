@@ -28,13 +28,8 @@ public class Proccess {
         return  this.results;
     }
 
-
-
-
-
-
     //---------------------------------------Metodos de Fabián---------------------------------//
-
+    //
     public char getNotTerminal(){
         return this.notTerminal;
     }
