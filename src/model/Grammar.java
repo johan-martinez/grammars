@@ -93,7 +93,7 @@ public class Grammar {
 
     /**
      * Añade un proceso a la gramática
-     * @param processText String en formato A->T|B. 
+     * @param processText String en formato A->T|B.
      * @return boolean que indica si es valido o no.
      */
     public void addProcess (String processText){
@@ -246,7 +246,6 @@ public class Grammar {
      * @param construction Nodo que indica dónde vamos.
      */
     private void verifyWord(String word, String construction, NodeSimple<String> nodo) {
-        String pro = construction;
         nodo.settInfo(construction);
         if (construction.length() <= word.length()) {
             ArrayList<String> ways = replaceTerminal(construction);
@@ -269,11 +268,10 @@ public class Grammar {
         ArrayList<String> toReturn =new ArrayList<>();
         for (int i = 0; i < word.length(); i++) {
 
-            if (isTerminal(word.charAt(i))) {
+            if (isNotTerminal(word.charAt(i))) {
                 for (Proccess p: proccesses) {
                     if (p.getNotTerminal()==word.charAt(i)){
                         String [] results = p.getResults();
-
                         for (int j = 0; j < results.length; j++) {
                             toReturn.add(word.replace(""+word.charAt(i),results[j]));
                         }
@@ -290,7 +288,7 @@ public class Grammar {
      * @param a Character a validar.
      * @return boolean que indica si es no terminal o no lo es.
      */
-    private boolean isTerminal (Character a) {
+    private boolean isNotTerminal (Character a) {
         for (Character iterator: notTerminals) {
             if (iterator.charValue() == a.charValue())
                 return true;

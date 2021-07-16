@@ -46,15 +46,15 @@ public class Proccess {
         return  this.results;
     }
 
-<<<<<<< HEAD
-    //---------------------------------------Metodos de Fabián---------------------------------//
+
+
     //
-=======
+
     /**
      * Obtener el símbolo no terminal de un proceso
      * @return char símbolo no terminal de un proceso
      */
->>>>>>> 5abadb5afd3fe483658d1efac4675f525af9cb22
+
     public char getNotTerminal(){
         return this.notTerminal;
     }

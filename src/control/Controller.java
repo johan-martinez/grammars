@@ -88,7 +88,7 @@ public class Controller implements ActionListener {
             ArrayList<Character> notTerminals=io.getNotTerminals();
             char axioma= io.getAxioma();
             ArrayList<String> proccesses= io.getProccesses();
-            if (alphabet.size()>1&&notTerminals.size()>2&&proccesses.size()>3) {
+            if (alphabet.size()>1&&notTerminals.size()>=2&&proccesses.size()>=3) {
                 this.grammar=new Grammar(alphabet,notTerminals,axioma,proccesses);
                 io.setTree(grammar.getTree(4));
                 io.showContainerPanel();
