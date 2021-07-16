@@ -93,7 +93,7 @@ public class Grammar {
 
     /**
      * Añade un proceso a la gramática
-     * @param proccessText String en formato A->T|B. 
+     * @param processText String en formato A->T|B. 
      * @return boolean que indica si es valido o no.
      */
     public void addProcess (String processText){
