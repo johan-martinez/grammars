@@ -17,6 +17,8 @@ public class ContainerPanel extends JPanel {
     private TreePanel treePanel;
     private PanelWord panelWord;
     private GridSystem gridSystem;
+    private JButton buttonBack;
+    
 
     /** 
      * Constructor.
@@ -36,10 +38,15 @@ public class ContainerPanel extends JPanel {
     private void initComponents(ActionListener l){
         treePanel=new TreePanel(new NTree());
 
-        this.add(treePanel,gridSystem.insertComponent(0,0,12,9));
+        this.add(treePanel,gridSystem.insertComponent(1,0,12,9));
 
         panelWord=new PanelWord(l);
-        this.add(panelWord,gridSystem.insertComponent(9,0,12,3));
+        this.add(panelWord,gridSystem.insertComponent(10,0,12,3));
+
+        buttonBack=new JButton("< Volver");
+        buttonBack.addActionListener(l);
+        buttonBack.setActionCommand(CommandsGUI.BACK_PANEL.name());
+        this.add(buttonBack,gridSystem.insertComponent(0,0,1,1));
     }
 
 
@@ -69,5 +76,12 @@ public class ContainerPanel extends JPanel {
      */
     public String getWord() throws Exception{
         return panelWord.getWord();
+    }
+
+      /** 
+     * Metodo que limpia el formulario
+     */
+    public void clear() {
+        this.panelWord.clear();
     }
 }

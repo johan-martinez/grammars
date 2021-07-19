@@ -9,29 +9,31 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- *Controlador de la logica del programa.
- *@author Equipo de trabajo
+ * Controlador de la logica del programa.
+ * 
+ * @author Equipo de trabajo
  */
 
 public class Controller implements ActionListener {
     private IOManager io;
     private Grammar grammar;
 
-    public Controller(){
+    public Controller() {
         try {
-            this.grammar=query();
-            this.io=new IOManager(this);
-            //io.setTree(this.grammar.getTree(4));
-        }catch (Exception e){
+            this.grammar = query();
+            this.io = new IOManager(this);
+            // io.setTree(this.grammar.getTree(4));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     /**
      * Crea una nueva clase de la gramatica
+     * 
      * @return g1 con una gramatica.
      */
-    private Grammar query() throws Exception{
+    private Grammar query() throws Exception {
         ArrayList<Character> alph = new ArrayList<>();
         alph.add('m');
         alph.add('n');
@@ -46,20 +48,20 @@ public class Controller implements ActionListener {
         p.add("A-> Bm|Am|n");
         p.add("S-> Am");
 
-        Grammar g1=new Grammar(alph, nt, 'S', p);
+        Grammar g1 = new Grammar(alph, nt, 'S', p);
         return g1;
     }
 
     /**
-     * analizeWord 
-     * Analiza la palabra si existe y notifica al usuario si se encontro o no .
+     * analizeWord Analiza la palabra si existe y notifica al usuario si se encontro
+     * o no .
      */
-    private void analizeWord(){
+    private void analizeWord() {
         try {
-            String word=io.getWord(); //sacarlo dela GUI
+            String word = io.getWord(); // sacarlo dela GUI
             io.showMessage(grammar.analizeWord(word), "Camino encontrado");
-        }catch (Exception e){
-            io.showError(e.getMessage(),"Error");
+        } catch (Exception e) {
+            io.showError(e.getMessage(), "Error");
         }
     }
 
@@ -68,35 +70,40 @@ public class Controller implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (CommandsGUI.valueOf(e.getActionCommand())){
+        switch (CommandsGUI.valueOf(e.getActionCommand())) {
             case CREATE_GRAMMAR:
                 createGrammar();
                 break;
             case ANALIZE_WORD:
                 analizeWord();
                 break;
+
+            case BACK_PANEL:
+                io.showPrincipalPanel();
+                break;
         }
     }
 
-     /**
-     * createGrammar 
-     * Crea una gramarica y retorna una notificacion al usuario
+    /**
+     * createGrammar Crea una gramarica y retorna una notificacion al usuario
      */
     private void createGrammar() {
         try {
-            ArrayList<Character> alphabet=io.getAlphabet();
-            ArrayList<Character> notTerminals=io.getNotTerminals();
-            char axioma= io.getAxioma();
-            ArrayList<String> proccesses= io.getProccesses();
-            if (alphabet.size()>1&&notTerminals.size()>=2&&proccesses.size()>=3) {
-                this.grammar=new Grammar(alphabet,notTerminals,axioma,proccesses);
+            ArrayList<Character> alphabet = io.getAlphabet();
+            ArrayList<Character> notTerminals = io.getNotTerminals();
+            char axioma = io.getAxioma();
+            ArrayList<String> proccesses = io.getProccesses();
+            if (alphabet.size() > 1 && notTerminals.size() > 2 && proccesses.size() > 2) {
+                this.grammar = new Grammar(alphabet, notTerminals, axioma, proccesses);
                 io.setTree(grammar.getTree(4));
                 io.showContainerPanel();
-            }else{
-                io.showError("Debe Ingresar:\n\t1)Mínimo dos símbolos terminales\n\t2)Minimo tres símbolos terminales\n\t3)Mínimo tres procesos","Error al crear gramática");
+            } else {
+                io.showError(
+                        "Debe Ingresar:\n\t1)Mínimo dos símbolos  terminales\n\t2)Minimo tres símbolos no terminales\n\t3)Mínimo tres procesos",
+                        "Error al crear gramática");
             }
-        }catch (Exception e){
-            this.grammar=null;
+        } catch (Exception e) {
+            this.grammar = null;
             io.showError(e.getMessage(), "Error al crear una gramática");
         }
     }

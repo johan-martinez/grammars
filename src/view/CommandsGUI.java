@@ -6,5 +6,5 @@ package view;
  * @author Grupo
  */
 public enum CommandsGUI {
-    CREATE_GRAMMAR, ANALIZE_WORD;
+    CREATE_GRAMMAR, ANALIZE_WORD,BACK_PANEL;
 }

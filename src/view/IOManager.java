@@ -121,6 +121,15 @@ public class IOManager extends JFrame {
         this.add(containerPanel, BorderLayout.CENTER);
     }
 
+    public void showPrincipalPanel() {
+        containerPanel.clear();
+    
+        this.containerPanel.setVisible(false);
+        this.panelPrincipal.setVisible(true);
+        this.add(panelPrincipal, BorderLayout.CENTER);
+    }
+
+
     /* 
      * Metodo que retorna una palabra.
      * @return String con la palabra dentro de el.
